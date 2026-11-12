@@ -1,1 +1,59 @@
 @import 'tailwindcss';
+
+@theme static {
+  /* Apricot ramp (400 is the brand color) */
+  --color-apricot-50: #fff6ee;
+  --color-apricot-100: #ffeadb;
+  --color-apricot-200: #ffd3b3;
+  --color-apricot-300: #ffb886;
+  --color-apricot-400: #ff9d5e;
+  --color-apricot-500: #ee843f;
+  --color-apricot-600: #cf6a28;
+  --color-apricot-700: #a5521d;
+  --color-apricot-800: #7a3a10;
+  --color-apricot-900: #3a1700;
+
+  /* Analogous neighbors */
+  --color-peach: #ffe0c2;
+  --color-honey: #ffc15e;
+  --color-coral: #ff7f6b;
+  --color-salmon: #e5604d;
+
+  /* Complementary teals (tabs and secondary actions) */
+  --color-mist: #dceff3;
+  --color-lagoon: #7fbbc9;
+  --color-ocean: #3a8fa3;
+  --color-deep-teal: #1f6478;
+
+  /* Warm neutrals (backgrounds, borders, text) */
+  --color-cream: #fffbf6;
+  --color-sand: #f3eae0;
+  --color-pebble: #d9ccbf;
+  --color-taupe: #8a7f76;
+  --color-espresso: #3b2a20;
+
+  /* Font family */
+  --font-sans: 'Alata', ui-sans-serif, system-ui, sans-serif;
+
+  /* Font sizes (with matching line heights) */
+  --text-xs: 0.75rem;
+  --text-xs--line-height: 1rem;
+  --text-sm: 0.875rem;
+  --text-sm--line-height: 1.25rem;
+  --text-base: 1rem;
+  --text-base--line-height: 1.5rem;
+  --text-lg: 1.125rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl: 1.25rem;
+  --text-xl--line-height: 1.75rem;
+  --text-2xl: 1.5rem;
+  --text-2xl--line-height: 2rem;
+  --text-3xl: 1.875rem;
+  --text-3xl--line-height: 2.25rem;
+  --text-4xl: 2.25rem;
+  --text-4xl--line-height: 2.5rem;
+
+  /* Font weights (Alata ships only 400; 700 is browser-synthesized) */
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+}
