@@ -1,17 +1,17 @@
 @import 'tailwindcss';
 
 @theme static {
-  /* Apricot ramp (400 is the brand color) */
-  --color-apricot-50: #fff6ee;
-  --color-apricot-100: #ffeadb;
-  --color-apricot-200: #ffd3b3;
-  --color-apricot-300: #ffb886;
-  --color-apricot-400: #ff9d5e;
-  --color-apricot-500: #ee843f;
-  --color-apricot-600: #cf6a28;
-  --color-apricot-700: #a5521d;
-  --color-apricot-800: #7a3a10;
-  --color-apricot-900: #3a1700;
+  /* Apricot ramp, 1 (lightest) to 10 (darkest); 5 is the brand color */
+  --color-apricot-1: #fff6ee;
+  --color-apricot-2: #ffeadb;
+  --color-apricot-3: #ffd3b3;
+  --color-apricot-4: #ffb886;
+  --color-apricot-5: #ff9d5e;
+  --color-apricot-6: #ee843f;
+  --color-apricot-7: #cf6a28;
+  --color-apricot-8: #a5521d;
+  --color-apricot-9: #7a3a10;
+  --color-apricot-10: #3a1700;
 
   /* Analogous neighbors */
   --color-peach: #ffe0c2;
