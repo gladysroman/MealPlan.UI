@@ -2,7 +2,6 @@ interface LogoProps {
   showWordmark?: boolean
 }
 
-// Bento box mark. A designer can swap this for a final logo later.
 export const LogoMark = () => {
   return (
     <svg

@@ -15,7 +15,7 @@ const PAGES: Record<TabId, () => React.JSX.Element> = {
   settings: SettingsPage,
 }
 
-const Layout = () => {
+const AppShell = () => {
   const [activeTab, setActiveTab] = useState<TabId>(DEFAULT_TAB)
   const ActivePage = PAGES[activeTab]
 
@@ -31,4 +31,4 @@ const Layout = () => {
   )
 }
 
-export default Layout
+export default AppShell
