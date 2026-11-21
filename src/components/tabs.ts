@@ -5,17 +5,17 @@ export interface Tab {
 }
 
 export const TABS = [
-  { id: 'meal-tracker', label: 'MealPlan' },
+  { id: 'home', label: 'MealPlan' },
   { id: 'this-week', label: 'This Week', icon: '📅' },
   { id: 'explore', label: 'Explore', icon: '🔍' },
   { id: 'profile', label: 'Profile', icon: '👤' },
   { id: 'settings', label: 'Settings', icon: '⚙️' },
-] as const
+] as const satisfies readonly Tab[]
 
 export type TabId = (typeof TABS)[number]['id']
 
-export const DEFAULT_TAB: TabId = 'meal-tracker'
+// The home tab is the default and the one that shows the logo.
+export const HOME_TAB_ID = 'home' satisfies TabId
 
-export const TAB_LIST: readonly Tab[] = TABS
-
-export const LOGO_TAB_ID: TabId = 'meal-tracker'
+export const tabElementId = (id: TabId) => `tab-${id}`
+export const panelElementId = (id: TabId) => `panel-${id}`

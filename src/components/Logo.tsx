@@ -1,8 +1,4 @@
-interface LogoProps {
-  showWordmark?: boolean
-}
-
-export const LogoMark = () => {
+const LogoMark = () => {
   return (
     <svg
       width="23"
@@ -49,15 +45,13 @@ export const LogoMark = () => {
   )
 }
 
-const Logo = ({ showWordmark = true }: LogoProps) => {
+const Logo = () => {
   return (
     <span className="flex items-center gap-2">
       <LogoMark />
-      {showWordmark && (
-        <span>
-          Meal<span className="text-apricot-5">Plan</span>
-        </span>
-      )}
+      <span className="hidden sm:inline">
+        Meal<span className="text-apricot-5">Plan</span>
+      </span>
     </span>
   )
 }

@@ -50,3 +50,44 @@ test('defaults to the MealPlan tab and switches tabs on click', () => {
     screen.getByRole('heading', { level: 1, name: 'MealPlan' }),
   ).toBeInTheDocument()
 })
+
+test('moves between tabs with arrow, Home and End keys', () => {
+  render(
+    <MemoryRouter initialEntries={['/']}>
+      <App />
+    </MemoryRouter>,
+  )
+  const tablist = screen.getByRole('tablist')
+
+  fireEvent.keyDown(tablist, { key: 'ArrowRight' })
+  const thisWeek = screen.getByRole('tab', { name: 'This Week' })
+  expect(thisWeek).toHaveAttribute('aria-selected', 'true')
+  expect(thisWeek).toHaveFocus()
+
+  fireEvent.keyDown(tablist, { key: 'End' })
+  expect(screen.getByRole('tab', { name: 'Settings' })).toHaveFocus()
+
+  fireEvent.keyDown(tablist, { key: 'ArrowRight' })
+  expect(screen.getByRole('tab', { name: 'MealPlan' })).toHaveFocus()
+
+  fireEvent.keyDown(tablist, { key: 'ArrowLeft' })
+  expect(screen.getByRole('tab', { name: 'Settings' })).toHaveFocus()
+
+  fireEvent.keyDown(tablist, { key: 'Home' })
+  expect(screen.getByRole('tab', { name: 'MealPlan' })).toHaveFocus()
+})
+
+test('only the active tab is in the tab order and each tab controls its panel', () => {
+  render(
+    <MemoryRouter initialEntries={['/']}>
+      <App />
+    </MemoryRouter>,
+  )
+  const tabs = screen.getAllByRole('tab')
+  expect(tabs.filter((tab) => tab.tabIndex === 0)).toHaveLength(1)
+
+  const active = screen.getByRole('tab', { selected: true })
+  const panel = screen.getByRole('tabpanel')
+  expect(active).toHaveAttribute('aria-controls', panel.id)
+  expect(panel).toHaveAttribute('aria-labelledby', active.id)
+})

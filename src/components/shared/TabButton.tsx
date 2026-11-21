@@ -1,6 +1,8 @@
 import type { ReactNode } from 'react'
 
 interface TabButtonProps {
+  id: string
+  panelId: string
   label: string
   isActive: boolean
   onClick: () => void
@@ -14,14 +16,23 @@ const UNDERLINE_CLASSES = 'inline-block border-b-3 pb-1 transition-colors'
 const UNDERLINE_ACTIVE = 'border-apricot-5'
 const UNDERLINE_INACTIVE = 'border-transparent group-hover:border-apricot-3'
 
-const TabButton = ({ label, isActive, onClick, children }: TabButtonProps) => {
+const TabButton = ({
+  id,
+  panelId,
+  label,
+  isActive,
+  onClick,
+  children,
+}: TabButtonProps) => {
   return (
     <button
       type="button"
       role="tab"
+      id={id}
+      aria-controls={panelId}
       aria-selected={isActive}
       aria-label={label}
-      title={label}
+      tabIndex={isActive ? 0 : -1}
       onClick={onClick}
       className={BUTTON_CLASSES}
     >
