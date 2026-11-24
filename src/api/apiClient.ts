@@ -17,7 +17,30 @@ export interface ApiClient {
   delete(path: string, signal?: AbortSignal): Promise<void>
 }
 
-export const createApiClient = (baseUrl: string): ApiClient => {
+export interface ApiClientOptions {
+  // Whether requests carry cookies. Use 'include' for the MealPlan API, whose
+  // sign-in cookie must be sent even when the API is on another origin.
+  credentials?: RequestCredentials
+  // Called when any response is 401, just before the ApiError is thrown.
+  onUnauthorized?: () => void
+}
+
+// Error responses are not always JSON (a server's plain-text stack trace, a
+// proxy's HTML error page). Those are kept as text so the status still reaches
+// the caller as an ApiError.
+const parseErrorBody = (text: string): unknown => {
+  if (!text) return undefined
+  try {
+    return JSON.parse(text)
+  } catch {
+    return text
+  }
+}
+
+export const createApiClient = (
+  baseUrl: string,
+  options: ApiClientOptions = {},
+): ApiClient => {
   const request = async <T>(
     method: string,
     path: string,
@@ -29,16 +52,19 @@ export const createApiClient = (baseUrl: string): ApiClient => {
       headers:
         body === undefined ? undefined : { 'Content-Type': 'application/json' },
       body: body === undefined ? undefined : JSON.stringify(body),
+      credentials: options.credentials,
       signal,
     })
 
     const text = await response.text()
-    const data: unknown = text ? JSON.parse(text) : undefined
 
     if (!response.ok) {
-      throw new ApiError(response.status, data)
+      if (response.status === 401) {
+        options.onUnauthorized?.()
+      }
+      throw new ApiError(response.status, parseErrorBody(text))
     }
-    return data as T
+    return (text ? JSON.parse(text) : undefined) as T
   }
 
   return {
