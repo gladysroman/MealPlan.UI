@@ -1,15 +1,15 @@
 import type { ReactNode } from 'react'
-import { useCurrentUser } from '../auth/useCurrentUser'
-import { useLogout } from '../auth/useLogout'
+import { useCurrentUser } from '../hooks/useCurrentUser'
+import { useLogout } from '../hooks/useLogout'
 import { OUTLINE_BUTTON_CLASSES } from '../components/shared/buttonStyles'
-import { useUserProfile } from '../users/useUserProfile'
+import { useUserProfile } from '../hooks/useUserProfile'
 
 const UNIT_OPTIONS = [
   { value: 'imperial', label: 'US (oz, cups)' },
   { value: 'metric', label: 'Metric (g, mL)' },
 ]
 
-interface RowProps {
+type RowProps = {
   label: string
   children: ReactNode
 }

@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react'
 
-interface TabButtonProps {
+type TabButtonProps = {
   id: string
   panelId: string
   label: string

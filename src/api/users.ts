@@ -1,7 +1,7 @@
 import { mealPlanApi } from './clients'
 
 // Field names match the API's JSON.
-export interface UserProfile {
+export type UserProfile = {
   name: string
   email: string
   pref_units: string

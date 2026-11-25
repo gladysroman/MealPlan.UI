@@ -24,6 +24,8 @@ export default defineConfig([
       // Project standard: arrow functions everywhere, no function declarations.
       'func-style': ['error', 'expression'],
       'prefer-arrow-callback': 'error',
+      // Project standard: object shapes are declared with type, not interface.
+      '@typescript-eslint/consistent-type-definitions': ['error', 'type'],
     },
   },
 ])

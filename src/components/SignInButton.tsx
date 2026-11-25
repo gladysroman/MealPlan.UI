@@ -1,7 +1,7 @@
-import { useCurrentUser } from '../auth/useCurrentUser'
+import { useCurrentUser } from '../hooks/useCurrentUser'
 import { OUTLINE_BUTTON_CLASSES } from './shared/buttonStyles'
 
-interface SignInButtonProps {
+type SignInButtonProps = {
   onClick: () => void
 }
 

@@ -9,7 +9,7 @@ import {
   type TabId,
 } from './tabs'
 
-interface TabBarProps {
+type TabBarProps = {
   tabs: readonly TabDefinition[]
   activeTab: TabId
   onTabChange: (tab: TabId) => void

@@ -2,14 +2,14 @@ import { ApiError } from './apiClient'
 import { authApi } from './clients'
 
 // Field names match the API's JSON.
-export interface CurrentUser {
+export type CurrentUser = {
   user_id: string
   name: string
   email: string
   pref_units: string
 }
 
-export interface LoginRequest {
+export type LoginRequest = {
   email: string
   password: string
 }

@@ -1,5 +1,5 @@
 import { useState, type ComponentType } from 'react'
-import { useCurrentUser } from '../auth/useCurrentUser'
+import { useCurrentUser } from '../hooks/useCurrentUser'
 import ExplorePage from '../pages/ExplorePage'
 import HomePage from '../pages/HomePage'
 import ProfilePage from '../pages/ProfilePage'
@@ -23,7 +23,7 @@ const PAGES: Record<TabId, ComponentType> = {
   settings: SettingsPage,
 }
 
-interface TabbedAppProps {
+type TabbedAppProps = {
   tabs: readonly TabDefinition[]
   initialTab: TabId
 }

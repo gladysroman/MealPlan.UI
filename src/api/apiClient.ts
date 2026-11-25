@@ -10,14 +10,14 @@ export class ApiError extends Error {
   }
 }
 
-export interface ApiClient {
+export type ApiClient = {
   get<T>(path: string, signal?: AbortSignal): Promise<T>
   post<T>(path: string, body: unknown, signal?: AbortSignal): Promise<T>
   put<T>(path: string, body: unknown, signal?: AbortSignal): Promise<T>
   delete(path: string, signal?: AbortSignal): Promise<void>
 }
 
-export interface ApiClientOptions {
+export type ApiClientOptions = {
   // Whether requests carry cookies. Use 'include' for the MealPlan API, whose
   // sign-in cookie must be sent even when the API is on another origin.
   credentials?: RequestCredentials

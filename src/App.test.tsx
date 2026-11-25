@@ -14,7 +14,7 @@ const jordan: CurrentUser = {
 
 type Responder = () => Response | Promise<Response>
 
-interface ApiStub {
+type ApiStub = {
   user?: CurrentUser | null
   // Override the answer to a call; each has a success answer by default.
   login?: Responder

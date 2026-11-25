@@ -2,7 +2,7 @@ import { useState } from 'react'
 import SignInButton from './SignInButton'
 import SignInForm from './SignInForm'
 
-interface PageWithSignInProps {
+type PageWithSignInProps = {
   title: string
 }
 

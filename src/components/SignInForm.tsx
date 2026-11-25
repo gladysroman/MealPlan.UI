@@ -1,6 +1,6 @@
 import { useId, useState, type FormEvent } from 'react'
 import { ApiError } from '../api/apiClient'
-import { useLogin } from '../auth/useLogin'
+import { useLogin } from '../hooks/useLogin'
 import {
   OUTLINE_BUTTON_CLASSES,
   PRIMARY_BUTTON_CLASSES,
@@ -18,7 +18,7 @@ const errorMessage = (error: unknown) =>
 
 // Replaces a tab's content while someone signs in. On success the app
 // switches to the signed-in view, so there is nothing to do here afterwards.
-interface SignInFormProps {
+type SignInFormProps = {
   onCancel: () => void
 }
 
