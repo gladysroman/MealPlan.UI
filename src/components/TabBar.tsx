@@ -3,40 +3,45 @@ import Logo from './Logo'
 import TabButton from './shared/TabButton'
 import {
   HOME_TAB_ID,
-  TABS,
   panelElementId,
   tabElementId,
+  type TabDefinition,
   type TabId,
 } from './tabs'
 
-interface TabBarProps {
+type TabBarProps = {
+  tabs: readonly TabDefinition[]
   activeTab: TabId
   onTabChange: (tab: TabId) => void
 }
 
-const nextTabIndex = (key: string, current: number): number | null => {
+const nextTabIndex = (
+  key: string,
+  current: number,
+  count: number,
+): number | null => {
   switch (key) {
     case 'ArrowRight':
-      return (current + 1) % TABS.length
+      return (current + 1) % count
     case 'ArrowLeft':
-      return (current - 1 + TABS.length) % TABS.length
+      return (current - 1 + count) % count
     case 'Home':
       return 0
     case 'End':
-      return TABS.length - 1
+      return count - 1
     default:
       return null
   }
 }
 
-const TabBar = ({ activeTab, onTabChange }: TabBarProps) => {
+const TabBar = ({ tabs, activeTab, onTabChange }: TabBarProps) => {
   const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
-    const current = TABS.findIndex((tab) => tab.id === activeTab)
-    const next = nextTabIndex(event.key, current)
+    const current = tabs.findIndex((tab) => tab.id === activeTab)
+    const next = nextTabIndex(event.key, current, tabs.length)
     if (next === null) return
 
     event.preventDefault()
-    const nextId = TABS[next].id
+    const nextId = tabs[next].id
     onTabChange(nextId)
     document.getElementById(tabElementId(nextId))?.focus()
   }
@@ -48,7 +53,7 @@ const TabBar = ({ activeTab, onTabChange }: TabBarProps) => {
       onKeyDown={handleKeyDown}
       className="flex overflow-hidden rounded-2xl border border-pebble bg-deep-teal"
     >
-      {TABS.map((tab) => (
+      {tabs.map((tab) => (
         <TabButton
           key={tab.id}
           id={tabElementId(tab.id)}

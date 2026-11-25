@@ -7,7 +7,6 @@ import { defineConfig } from 'vitest/config'
 const MEALPLAN_API = 'http://localhost:5290'
 const INGREDIENTS_API = 'http://localhost:5280'
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
