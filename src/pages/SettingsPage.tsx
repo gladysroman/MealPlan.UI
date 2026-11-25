@@ -1,8 +1,6 @@
 import type { ReactNode } from 'react'
-import { useCurrentUser } from '../hooks/useCurrentUser'
-import { useLogout } from '../hooks/useLogout'
+import { useCurrentUser, useLogout, useUserProfile } from '../hooks'
 import { OUTLINE_BUTTON_CLASSES } from '../components/shared/buttonStyles'
-import { useUserProfile } from '../hooks/useUserProfile'
 
 const UNIT_OPTIONS = [
   { value: 'imperial', label: 'US (oz, cups)' },

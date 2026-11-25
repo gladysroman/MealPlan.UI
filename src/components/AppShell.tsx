@@ -1,5 +1,5 @@
 import { useState, type ComponentType } from 'react'
-import { useCurrentUser } from '../hooks/useCurrentUser'
+import { useCurrentUser } from '../hooks'
 import ExplorePage from '../pages/ExplorePage'
 import HomePage from '../pages/HomePage'
 import ProfilePage from '../pages/ProfilePage'

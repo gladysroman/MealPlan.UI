@@ -1,6 +1,6 @@
 import { useId, useState, type FormEvent } from 'react'
 import { ApiError } from '../api/apiClient'
-import { useLogin } from '../hooks/useLogin'
+import { useLogin } from '../hooks'
 import {
   OUTLINE_BUTTON_CLASSES,
   PRIMARY_BUTTON_CLASSES,

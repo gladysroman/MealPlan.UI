@@ -1,4 +1,4 @@
-import { useCurrentUser } from '../hooks/useCurrentUser'
+import { useCurrentUser } from '../hooks'
 import { OUTLINE_BUTTON_CLASSES } from './shared/buttonStyles'
 
 type SignInButtonProps = {
